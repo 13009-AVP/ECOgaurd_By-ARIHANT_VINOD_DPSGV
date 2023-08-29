@@ -1,3 +1,5 @@
+	
+#BEFORE USING THE PROGRAM , MAKE SURE THAT YOU ARE WELL LIGHTEN AND DON"T MIX WITH THE BACKGROUND ( PREFERABLY TO BE DARK IN COLOT)
 import cv2
 from deepface import DeepFace
 import pygame
@@ -18,17 +20,17 @@ aD = False
 def music():
     x = random.randint(1, 6)
     if x == 1:
-        mixer.music.load('anger_1.wav')
+        mixer.music.load('anger_1.wav')    # song 1
     elif x == 2:
-        mixer.music.load('anger_2.wav')
+        mixer.music.load('anger_2.wav')    # song 2
     elif x == 3:
-        mixer.music.load('anger_3.wav')
+        mixer.music.load('anger_3.wav')    # song 3
     elif x == 4:
-        mixer.music.load('sad_fear_1.wav')
+        mixer.music.load('sad_fear_1.wav') # song 4
     elif x == 5:
-        mixer.music.load('sad_fear_2.wav')
+        mixer.music.load('sad_fear_2.wav') # song 5
     elif x == 6:
-        mixer.music.load('sad_fear_3.wav')
+        mixer.music.load('sad_fear_3.wav') # song 6
 
     mixer.music.play(-1)
     mixer.music.pause()
@@ -37,7 +39,7 @@ music()
 
 #Vid_C = cv2.VideoCapture('http://192.168.29.66:8080/video')
 Vid_C = cv2.VideoCapture(0)
-Fc = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+Fc = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') # haarcascade for the detection of the front face
 
 while True:
     _, vid = Vid_C.read()
@@ -57,14 +59,14 @@ while True:
                 analyze[0]['dominant_emotion'] = 'fear'
             if analyze[0]['dominant_emotion'] == emotion:
                 count = count+1
-                cv2.putText(vid,analyze[0]['dominant_emotion'], (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0),
+                cv2.putText(vid,analyze[0]['dominant_emotion'], (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255),
                 2)
 
             else:
                 count=0
                 if analyze[0]['dominant_emotion'] == counter:
                     emotion = counter
-                    cv2.putText(vid, analyze[0]['dominant_emotion'], (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0),
+                    cv2.putText(vid, analyze[0]['dominant_emotion'], (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255),
                             2)
                 else:
                     counter = analyze[0]['dominant_emotion']
@@ -73,7 +75,7 @@ while True:
 
 
         except:
-            cv2.putText(vid, emotion, (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0),
+            cv2.putText(vid, emotion, (10, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255),
                         2)
 
         print(count)
@@ -99,3 +101,5 @@ while True:
         break
 Vid_C.release()
 cv2.destroyAllWindows()
+
+
